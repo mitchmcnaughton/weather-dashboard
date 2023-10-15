@@ -10,10 +10,96 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Web Page</h1>
-    </header>
-
+    <!--HEADER -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <header class="bg-dark text-white text-center p-3">
+                    <h1>Weather Dashboard</h1>
+                </header>
+            </div>
+        </div>
+        <!--SEARCH SECTION-->
+        <div class="row">
+            <div class="col-3">
+                <div class="p-3">
+                    <h2>Search for a city:</h2>
+                    <div class="input-group mb-3">
+                        <input type="text" id ="searchBar" class="form-control" placeholder="Enter city">
+                    </div>
+                    <div class="input-group mb-3">
+                        <button id="searchButton" class="btn btn-primary btn-block" type="button">Search</button>
+                    </div>
+                    <h2 class="mt-3">Previous Searches:</h2>
+                    <ul id="previousSearches" class="list-group">
+                        <!-- Previous search results go here -->
+                    </ul>
+                </div>
+            </div>
+            <!--WEATHER INFORMATION FOR TODAYS DATE-->
+            <div class="col-9">
+                <div class="p-3">
+                    <h2 id ="currentDay">City Name</h2>
+                    <div class="border border-dark p-3">
+                        <p id ="currentTemp">Temperature: 75°F</p>
+                        <p id = "currnetWind">Wind: 10 mph</p>
+                        <p id = "currentHumid">Humidity: 50%</p>
+                    </div>
+                    <!--WEATHER INFO FOR THE NEXT 5 DAYS -->
+                    <h2 class="mt-4">5-day Forecast</h2>
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="bg-dark text-white p-3">
+                                <h4 id ="firstDay">Date</h4>
+                                <p id = "firstWeather">☀️</p>
+                                <p id ="firstTemp">Temp: 70°F</p>
+                                <p id = "firstWind">Wind: 12 mph</p>
+                                <p id = "firstHumid">Humidity: 55%</p>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="bg-dark text-white p-3">
+                                <h4 id ="secondDay">Date</h4>
+                                <p id = "secondWeather">☀️</p>
+                                <p id ="secondTemp">Temp: 70°F</p>
+                                <p id = "secondWind">Wind: 12 mph</p>
+                                <p id = "secondHumid">Humidity: 55%</p>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="bg-dark text-white p-3">
+                                <h4 id ="thirdDay">Date</h4>
+                                <p id = "thirdWeather">☀️</p>
+                                <p id ="thirdTemp">Temp: 70°F</p>
+                                <p id = "thirdWind">Wind: 12 mph</p>
+                                <p id = "thirdHumid">Humidity: 55%</p>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="bg-dark text-white p-3">
+                                <h4 id ="fourthDay">Date</h4>
+                                <p id = "fourthWeather">☀️</p>
+                                <p id ="fourthTemp">Temp: 70°F</p>
+                                <p id = "fourthWind">Wind: 12 mph</p>
+                                <p id = "fourthHumid">Humidity: 55%</p>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="bg-dark text-white p-3">
+                                <h4 id ="fifthDay">Date</h4>
+                                <p id = "fifthWeather">☀️</p>
+                                <p id ="fifthTemp">Temp: 70°F</p>
+                                <p id ="fifthWind">Wind: 12 mph</p>
+                                <p id = "fifthHumid">Humidity: 55%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
