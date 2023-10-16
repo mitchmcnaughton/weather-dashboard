@@ -5,41 +5,42 @@ function previousSearches(){
     const previousSearchList = $('#previousSearches');
 
     if (previousSearches) {
-        
+
         previousSearches.forEach(search => {
+        //checking to see if its already been searched
+        if ($('.search-buttons').filter(function() {
+            return $(this).text() ===search;
+        }).length === 0) {
+            //else add classes to format it and append it to the previous searches
             const liElement = $('<li>').addClass('search-buttons list-group-item list-group-item-secondary text-center font-weight-bold h5').text(search);
             previousSearchList.append(liElement);
-
+            }
         });
             
     }
         
 }
 
-previousSearches();
-
+//runs it to update if someone has searched
+setInterval(previousSearches, 1000);
 
 //code to take users input from search bar
-
 var searchButton = $('#searchButton');
 
-
-console.log("yes");
+//click function
 searchButton.click(function(){
+    //grabs the value from search bar
     var citySearched = $('#searchBar').val();
-    console.log(citySearched);
 
-    // Define the API URL with actual values
+    // api url
 const locationUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${citySearched}&limit=1&appid=bf9dec9324e28e79431321a378e088a9`;
 
-// Use the fetch function to make the API request
-fetch(locationUrl)
-  .then(response => response.json())
-  .then(data => {
-    // Handle the API response data here
-    console.log(data);
-    var locationData = data;
-    //Storing the search to local storage
+    // fetch request
+    fetch(locationUrl)
+        .then(response => response.json())
+        .then(data => {
+        var locationData = data;
+        //storing the search to local storage
 
     //Seeing if it already exists
     if (localStorage.getItem('previousSearches')) {
@@ -54,13 +55,11 @@ fetch(locationUrl)
     } else {
         //else store in it local storage
         const previousSearches = [citySearched];
-
         localStorage.setItem('previousSearches', JSON.stringify(previousSearches));
-
 
     }
 
-    //defining the api link
+    //api request for 
     const weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${locationData[0].lat}&lon=${locationData[0].lon}&units=metric&appid=bf9dec9324e28e79431321a378e088a9`;
         //fetch request
         fetch(weatherUrl)
@@ -69,7 +68,6 @@ fetch(locationUrl)
             console.log(data);
             var weatherInfo = data.list;
            
-        
            //changing cityname date, emoji, temp, wind, humidty for the bigger box below header
             $('#currentDay').text(citySearched + " " + weatherInfo[0].dt_txt.substr(5,5));
             $('#currentTemp').text("Temp: " + weatherInfo[0].main.temp +" C°")
@@ -152,15 +150,14 @@ fetch(locationUrl)
 
         })
         .catch(error => {
-            // handle any errors that occurred during the request
+            // error handler
             console.error('Error:', error);
           });
 
     
-
   })
   .catch(error => {
-    // handle any errors that occurred during the request
+    // error handler
     console.error('Error:', error);
   });
 
@@ -168,23 +165,21 @@ fetch(locationUrl)
 
 
 
-
+//click event for previous searches
 $("#previousSearches").on("click", ".search-buttons", function() {
-    var citySearched = $(this).text(); // Get the text of the button
-    
-        // Define the API URL with actual values
-const locationUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${citySearched}&limit=1&appid=bf9dec9324e28e79431321a378e088a9`;
+    //get the text content of the button
+    var citySearched = $(this).text(); 
+    //api request for weather deatils
+    const locationUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${citySearched}&limit=1&appid=bf9dec9324e28e79431321a378e088a9`;
 
-// Use the fetch function to make the API request
+// fetch request
 fetch(locationUrl)
   .then(response => response.json())
   .then(data => {
-    // Handle the API response data here
     console.log(data);
     var locationData = data;
-    //Storing the search to local storage
-
-    //Seeing if it already exists
+   
+    //seeing if it already exists
     if (localStorage.getItem('previousSearches')) {
         
         const previousSearches = JSON.parse(localStorage.getItem('previousSearches'));
@@ -197,10 +192,7 @@ fetch(locationUrl)
     } else {
         //else store in it local storage
         const previousSearches = [citySearched];
-
-        localStorage.setItem('previousSearches', JSON.stringify(previousSearches));
-
-
+        localStorage.setItem('previousSearches', JSON.stringify(previousSearches))
     }
 
     //defining the api link
@@ -292,18 +284,15 @@ fetch(locationUrl)
             $('#fifthWind').text("Wind: " + weatherInfo[35].wind.speed +" KM/H");
             $('#fifthHumid').text("Humidity: " + weatherInfo[35].main.humidity + "%");
 
-
         })
         .catch(error => {
-            // handle any errors that occurred during the request
+            // error handler
             console.error('Error:', error);
           });
 
-    
-
   })
   .catch(error => {
-    // handle any errors that occurred during the request
+    // error handler
     console.error('Error:', error);
   });
 
