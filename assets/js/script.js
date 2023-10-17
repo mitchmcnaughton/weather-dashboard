@@ -170,7 +170,7 @@ $("#previousSearches").on("click", ".search-buttons", function() {
     //get the text content of the button
     var citySearched = $(this).text(); 
     //api request for weather deatils
-    const locationUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${citySearched}&limit=1&appid=bf9dec9324e28e79431321a378e088a9`;
+    const locationUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${citySearched}&limit=1&appid=bf9dec9324e28e79431321a378e088a9`;
 
 // fetch request
 fetch(locationUrl)

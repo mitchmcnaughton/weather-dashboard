@@ -6,11 +6,12 @@ a website designed to show you the weather around the world
 
 # usage
 
-go to website![Alt text](assets/imgs/weatherdashboard.PNG)
+go to website! https://mitchmcnaughton.github.io/weather-dashboard/
+
 
 should look similar to this
 
-
+[Alt text](assets/imgs/weatherdashboard.PNG)
 # credits
 
 N/a
